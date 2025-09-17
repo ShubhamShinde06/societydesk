@@ -48,6 +48,10 @@ body, p, span, input, button, table {
   font-family: var(--font-body), sans-serif;
 }
 
+.body{
+  @apply bg-gradient-to-b from-[#F8F7FE] to-[#EDEBFA]
+}
+
 .btn-orange{
   @apply w-full py-3 bg-gradient-to-r from-[#FFB703] to-[#FF8800] text-white font-semibold rounded-xl shadow-md transition hover:scale-[1.02] hover:shadow-lg
 }
@@ -122,7 +126,7 @@ body, p, span, input, button, table {
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
+  --sidebar: #ffffff;
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);

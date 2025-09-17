@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/AppComponents/Footer";
 import SideBar from "@/components/AppComponents/SideBar";
 import { usePathname, useSearchParams } from "next/navigation";
 //import Header from "@/components/AppComponents/Header";
@@ -39,6 +40,12 @@ export default function AppLayout({ children }) {
           <div className="flex-1 overflow-auto custom-scroll ">
             {children}
           </div>
+
+          {!hideLayout && (
+            <div className="fixed bottom-0 left-0 w-full bg-white shadow-2xl px-4 py-2">
+              <Footer/>
+            </div>
+          )}
         </div>
       </main>
     </>

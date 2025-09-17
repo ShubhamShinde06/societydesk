@@ -1,6 +1,6 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
+
 import { EyeIcon, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -14,34 +14,34 @@ export default function Login() {
       <div className="w-full h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
         <h1 className="text-2xl font-semibold">Login</h1>
         <div className="w-full flex flex-col space-y-4 items-start">
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label htmlFor="">Society Code</label>
-            <Input
+            <input
               type="text"
               placeholder="Enter your society code"
-              className="border border-gray-400  w-full "
+              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
               tabIndex={1}
               
             />
           </div>
 
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label htmlFor="">Phone No.</label>
-            <Input
+            <input
               type="text"
               placeholder="Enter your phone no."
-              className="border border-gray-400 w-full "
+              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
               tabIndex={2}
             />
           </div>
 
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label htmlFor="">Password</label>
-            <div className="border border-gray-400 w-full text-start rounded-md flex items-center justify-between">
-              <Input
+            <div className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-between">
+              <input
                 type={ShowPassword ? "text" : "password"}
                 placeholder="Enter your password"
-                className="  flex-1"
+                className="  flex-1 border-0 outline-0"
                 tabIndex={3}
               />
               <div
@@ -55,7 +55,7 @@ export default function Login() {
           </div>
 
           <button className="btn-purple" tabIndex={4}>
-            Login
+          <Link href={'/home'}>Login</Link>  
           </button>
           <p className="text-center w-full">
             Don't have an account?{" "}

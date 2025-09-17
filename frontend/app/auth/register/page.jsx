@@ -23,22 +23,22 @@ export default function Register() {
         <h1 className="text-2xl font-semibold">Register</h1>
         <div className="w-full flex flex-col space-y-4 items-start">
           {/* Society Code */}
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label>Society Code</label>
-            <Input
+            <input
               type="text"
               placeholder="Enter your society"
-              className="w-full border border-gray-300"
+              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]"
               tabIndex={1}
               
             />
           </div>
 
           {/* Wing Dropdown */}
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label>Wing</label>
             <Select>
-              <SelectTrigger className="w-full border border-gray-300">
+              <SelectTrigger className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]">
                 <SelectValue placeholder="Select Wing" />
               </SelectTrigger>
               <SelectContent>
@@ -53,10 +53,10 @@ export default function Register() {
           </div>
 
           {/* Floor Dropdown */}
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label>Floor</label>
             <Select>
-              <SelectTrigger className="w-full border border-gray-300">
+              <SelectTrigger className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]">
                 <SelectValue placeholder="Select Floor" />
               </SelectTrigger>
               <SelectContent>
@@ -73,10 +73,10 @@ export default function Register() {
           </div>
 
           {/* Flat Number Dropdown */}
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label>Flat No.</label>
             <Select >
-              <SelectTrigger className="w-full border border-gray-300">
+              <SelectTrigger className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]">
                 <SelectValue placeholder="Select Flat No." />
               </SelectTrigger>
               <SelectContent>
@@ -93,33 +93,33 @@ export default function Register() {
           </div>
 
           {/* Full Name */}
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label>Full Name</label>
-            <Input
+            <input
               type="text"
               placeholder="Enter your full name"
-              className="w-full border border-gray-300"
+              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]"
             />
           </div>
 
           {/* Phone */}
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label>Phone No.</label>
-            <Input
+            <input
               type="number"
               placeholder="Enter your phone no."
-              className="w-full border border-gray-300"
+              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]"
             />
           </div>
 
           {/* Password */}
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label>Set Password</label>
-            <div className="border border-gray-300 rounded-md w-full  text-start flex justify-between items-center">
-              <Input
+            <div className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8] text-start flex justify-between items-center">
+              <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Set password"
-                className="bg-transparent border-0 outline-0 flex-1 px-2 "
+                className="bg-transparent border-0 outline-0 flex-1  "
               />
               <div
                 className="pr-2 cursor-pointer"
@@ -131,13 +131,15 @@ export default function Register() {
           </div>
 
           {/* Family Members */}
-          <div className="w-full flex flex-col items-start space-y-2">
+          <div className="w-full flex flex-col items-start space-y-1">
             <label>How Many Members in Family</label>
-            <Input type="number" placeholder="Enter number" className="w-full border border-gray-300" />
+            <input type="number" placeholder="Enter number" className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]" />
           </div>
 
           {/* Register Button */}
-          <button className="btn-skyblue w-full">Register</button>
+          <button className="btn-skyblue w-full">
+            <Link href={'/home'}>Register</Link>  
+          </button>
 
           {/* Login Link */}
           <p className="text-center w-full">
