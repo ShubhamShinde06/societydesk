@@ -40,6 +40,10 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+*::-webkit-scrollbar{
+  display: none;
+}
+
 h1, h2, h3, h4, h5, h6, .heading {
   font-family: var(--font-heading), sans-serif;
 }
@@ -48,7 +52,11 @@ body, p, span, input, button, table {
   font-family: var(--font-body), sans-serif;
 }
 
-.body{
+.header{
+  @apply bg-gradient-to-r from-purple-100 to-blue-100
+}
+
+.card{
   @apply bg-gradient-to-b from-[#F8F7FE] to-[#EDEBFA]
 }
 

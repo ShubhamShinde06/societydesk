@@ -46,6 +46,7 @@ export default function AppSideBar() {
             <p className="text-sm text-gray-200">302, Wing A, Jackson Height</p>
             <Link
               href="/my-profile"
+              onClick={() => window.innerWidth < 1024 && toggleSidebar()}
               className="text-yellow-400 underline text-sm hover:text-yellow-300"
             >
               View Profile

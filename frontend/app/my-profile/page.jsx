@@ -49,7 +49,7 @@ export default function MyProfilePage() {
           </p>
         </div>
         <button className="absolute top-4 right-4 text-orange-500">
-          <Edit className="h-5 w-5" onClick={()=>setShowMySelfForm(true)} />
+          <Edit className="h-5 w-5" onClick={() => setShowMySelfForm(true)} />
         </button>
       </div>
 
@@ -83,7 +83,7 @@ export default function MyProfilePage() {
           {family.map((member, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center bg-white p-3 rounded-lg shadow-sm"
+              className="flex flex-col items-center card p-3 rounded-lg shadow-sm"
             >
               <Image
                 src={member.img}
@@ -113,7 +113,7 @@ export default function MyProfilePage() {
           {vehicles.map((vehicle, idx) => (
             <div
               key={idx}
-              className="bg-white p-3 rounded-lg shadow-sm flex flex-col items-center"
+              className="card p-3 rounded-lg shadow-sm flex flex-col items-center"
             >
               <Image
                 src={vehicle.img}
@@ -134,7 +134,7 @@ export default function MyProfilePage() {
         <>
           <div className="fixed w-full inset-0 z-50 flex items-end justify-center bg-opacity-60 bg-black/50 backdrop-blur-x">
             <div className="w-full lg:w-1/2 rounded overflow-hidden">
-              <MySelfForm setShowMySelfForm={setShowMySelfForm}/>
+              <MySelfForm setShowMySelfForm={setShowMySelfForm} />
             </div>
           </div>
         </>

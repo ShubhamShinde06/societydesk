@@ -1,40 +1,49 @@
 "use client";
 
 import { Home, Wrench, ClipboardList, Shield, HelpCircle } from "lucide-react";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+
 
 const menuItems = [
-  { name: "Home", icon: Home },
-  { name: "Services", icon: Wrench },
-  { name: "Activity", icon: ClipboardList },
-  { name: "Security", icon: Shield },
-  { name: "Help", icon: HelpCircle },
+  { name: "Home", icon: Home, herf:'/home' },
+  { name: "Services", icon: Wrench, herf:'#' },
+  { name: "Activity", icon: ClipboardList, herf:'#' },
+  { name: "Security", icon: Shield, herf:'#' },
+  { name: "Help", icon: HelpCircle, herf:'#' },
 ];
 
 const Footer = () => {
-  const [active, setActive] = useState("Home");
+
+  const pathname = usePathname()
+  const router = useRouter()
 
   return (
-
-      <div className="flex justify-between">
+    <div className="fixed bottom-0 left-0 w-full bg-white shadow-md rounded-t-3xl">
+      <div className="flex justify-around py-1">
         {menuItems.map((item) => {
           const Icon = item.icon;
-          const isActive = active === item.name;
+          const isActive = pathname === item.herf;
 
           return (
             <button
               key={item.name}
-              onClick={() => setActive(item.name)}
-              className="flex flex-col items-center text-xs focus:outline-none"
+              onClick={() => router.push(item.herf)}
+              className="flex flex-col items-center text-xs focus:outline-none pb-1"
             >
-              <Icon
-                className={`w-6 h-6 ${
-                  isActive ? "text-orange-500 fill-orange-500" : "text-gray-500"
+              <div
+                className={`flex items-center justify-center w-10 h-10 rounded-full ${
+                  isActive ? "bg-orange-100" : ""
                 }`}
-              />
+              >
+                <Icon
+                  className={`w-6 h-6 ${
+                    isActive ? "text-yellow-500" : "text-gray-500"
+                  }`}
+                />
+              </div>
               <span
-                className={`mt-1 ${
-                  isActive ? "text-orange-500 font-medium" : "text-gray-500"
+                className={` ${
+                  isActive ? "text-yellow-500 font-medium" : "text-gray-500"
                 }`}
               >
                 {item.name}
@@ -43,7 +52,7 @@ const Footer = () => {
           );
         })}
       </div>
- 
+    </div>
   );
 };
 

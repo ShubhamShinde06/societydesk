@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, Camera, X } from "lucide-react";
+import { Camera, X } from "lucide-react";
 import { useState } from "react";
 
 const MySelfForm = ({setShowMySelfForm}) => {
