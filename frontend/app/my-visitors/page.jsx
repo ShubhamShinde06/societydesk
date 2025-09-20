@@ -68,7 +68,7 @@ export default function MyVisitorsPage() {
           <span onClick={()=>router.push('/my-visitors/list')} className="text-sm text-gray-500 cursor-pointer">View All</span>
         </div>
 
-        <Link href={'/my-visitors/details/2'} className="bg-gradient-to-r from-purple-100 to-indigo-100 p-4 rounded-2xl flex gap-4 shadow">
+        <Link href={'/my-visitors/list/details/2'} className="bg-gradient-to-r from-purple-100 to-indigo-100 p-4 rounded-2xl flex gap-4 shadow">
           {/* Visitor Image */}
           <Image
             src={visitorRequest.image}
