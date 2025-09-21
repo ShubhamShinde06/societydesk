@@ -52,7 +52,7 @@ export default function MyVisitorsPage() {
   const filteredVisitors = visitors.filter((v) => v.status === tab);
 
   return (
-    <div className="w-full h-full bg-white">
+    <div className="w-full h-full bg-gray-50">
       {/* Header */}
       <Header heading={"My Visitors"} placholder={"Search for visitors"} />
 

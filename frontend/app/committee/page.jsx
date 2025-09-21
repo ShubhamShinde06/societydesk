@@ -47,7 +47,7 @@ export default function CommitteePage() {
 
   return (
     <>
-      <div className="w-full h-full bg-white overflow-y-auto pb-20">
+      <div className="w-full h-full bg-gray-50 overflow-y-auto pb-20">
         {/* Header */}
         <Header
           href={"home"}

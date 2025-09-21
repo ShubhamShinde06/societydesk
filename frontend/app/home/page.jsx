@@ -47,14 +47,14 @@ const features = [
     name: "Events",
     icon: <PartyPopper className="w-8 h-8 text-purple-500" />,
     bg: "bg-purple-50",
-    herf: "/my-society",
+    herf: "/events",
   },
   {
     id: 5,
     name: "Complaints",
     icon: <MailWarning className="w-8 h-8 text-red-500" />,
     bg: "bg-orange-100",
-    herf: "/my-society",
+    herf: "/my-complaints",
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="w-full h-full bg-[#FFFFFF]">
+      <div className="w-full h-full bg-gray-50">
         <div className="w-full header px-4 py-3 rounded-b-3xl shadow-md">
           {/* Top Row */}
           <div className="flex items-center justify-between">

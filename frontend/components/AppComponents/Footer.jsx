@@ -17,8 +17,10 @@ const Footer = () => {
   const pathname = usePathname()
   const router = useRouter()
 
+
+
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white shadow-md rounded-t-3xl">
+    <div className="fixed bottom-0 left-0 w-full bg-white shadow-xl rounded-t-3xl">
       <div className="flex justify-around py-1">
         {menuItems.map((item) => {
           const Icon = item.icon;

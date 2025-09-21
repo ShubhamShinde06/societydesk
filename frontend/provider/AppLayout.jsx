@@ -12,18 +12,21 @@ export default function AppLayout({ children }) {
 
   const hiddenPaths = [
     "/",
-    "/auth",
-    "/auth/login",
-    "/auth/register",
-    "/auth/society",
-    "/auth/forgot",
-    "/auth/set-new-password"
+    "/auth/set-new-password",
+    "/my-profile/family-member/add",
+    "/my-profile/vehicle/add",
+    "/my-complaints"
   ];
 
   const isReadonly = searchParams?.get("view") === "readonly";
   const hasRptFrmNo = searchParams?.has("RptFrmNo");
   const hideLayout =
-    hiddenPaths.includes(pathname) || (isReadonly && hasRptFrmNo);
+    hiddenPaths.includes(pathname) || 
+    (isReadonly && hasRptFrmNo) || 
+    pathname.startsWith("/events/details/") ||
+    pathname.startsWith("/auth/") ||
+    pathname.startsWith("/my-visitors/details/") ||
+    pathname.startsWith("/my-visitors/list/details/")
   
 
   return (

@@ -21,7 +21,7 @@ export default function MyProfilePage() {
   const [ShowMySelfForm, setShowMySelfForm] = useState(false);
 
   return (
-    <div className="w-full h-full p-4 space-y-6 overflow-y-scroll pb-20">
+    <div className="w-full h-full p-4 space-y-6 overflow-y-scroll pb-20 bg-gray-50">
       {/* Header */}
       <div className="flex items-center gap-3">
         <Link href={"/home"}>

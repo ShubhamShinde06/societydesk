@@ -7,7 +7,7 @@ const Header = ({ href, heading, placholder }) => {
   const router = useRouter();
 
   return (
-    <div className="w-full header px-4 py-3 rounded-b-3xl shadow-md">
+    <div className="w-full header px-4 py-5 rounded-b-3xl shadow-md">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <ArrowLeft

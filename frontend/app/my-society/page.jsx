@@ -17,7 +17,7 @@ export default function MySocietyPage() {
   const router = useRouter()
 
   return (
-    <div className="w-full h-full bg-white">
+    <div className="w-full h-full bg-gray-50">
       {/* Header */}
       <Header
         href={'home'}
