@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import { ArrowLeft, Calendar, MapPin } from "lucide-react";
-import Header from "@/components/AppComponents/Header";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import NameHeader from "@/components/AppComponents/NameHeader";
 
 const EventsPage = () => {
-  const [activeTab, setActiveTab] = useState("upcoming");
-
+  const [activeTab, setActiveTab] = useState("Upcoming");
+  const router = useRouter()
   const events = [
     {
       id: 1,
@@ -98,37 +99,32 @@ const EventsPage = () => {
   return (
     <div className="w-full min-h-screen bg-gray-50 relative overflow-y-auto pb-20">
       {/* Header */}
-      <Header heading={"Events"} placholder={"Search for events"} />
+      <NameHeader 
+        heading={'Events'}
+      />
 
       {/* Tab Navigation */}
-      <div className="absolute top-26 w-full flex items-center justify-center z-20">
-        <div className="bg-white rounded-full shadow-lg flex items-center p-1 mx-4">
-          <button
-            onClick={() => setActiveTab("upcoming")}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-              activeTab === "upcoming"
-                ? "bg-orange-400 text-white shadow-md"
-                : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            Upcoming
-          </button>
-          <button
-            onClick={() => setActiveTab("past")}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-              activeTab === "past"
-                ? "bg-orange-400 text-white shadow-md"
-                : "text-gray-600 hover:text-gray-900"
-            }`}
-          >
-            Past
-          </button>
+      <div className="px-4 mb-6 mt-4">
+        <div className="flex bg-gray-100 rounded-full p-1">
+          {["Upcoming", "Past"].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex-1 py-3 px-4 rounded-full text-sm font-medium transition-colors ${
+                activeTab === tab
+                  ? "bg-[#FFA800] text-white shadow-sm"
+                  : "text-gray-600 hover:text-gray-800"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
       </div>
 
       {/* Events Content */}
-      <div className="pt-15 pb-8 px-4">
-        {activeTab === "upcoming" && (
+      <div className="pb-8 px-4">
+        {activeTab === "Upcoming" && (
           <div className="space-y-4">
             {/* Featured Event */}
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
@@ -155,7 +151,7 @@ const EventsPage = () => {
             {/* Regular Events */}
             {events.slice(1).map((event) => (
               <Link
-                href={'/events/details/2'}
+                href={"/events/details/2"}
                 key={event.id}
                 className="bg-white rounded-2xl shadow-sm p-4 flex items-center gap-4"
               >
@@ -198,7 +194,7 @@ const EventsPage = () => {
           </div>
         )}
 
-        {activeTab === "past" && (
+        {activeTab === "Past" && (
           <div className="space-y-4">
             {pastEvents.map((event) => (
               <div

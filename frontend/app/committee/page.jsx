@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/AppComponents/Header";
+import Header from "@/components/AppComponents/SearchHeader";
 import { Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,7 +56,7 @@ export default function CommitteePage() {
         />
 
         <h1 className=" font-semibold mt-4 m-4 text-center">
-          Managing Commitee <span className="text-yellow-500">2024-2025</span>
+          Managing Commitee <span className="text-[#FFA800]">2024-2025</span>
         </h1>
 
         <div className="grid grid-cols-2 gap-3  place-items-center px-3">
@@ -66,20 +66,23 @@ export default function CommitteePage() {
               key={res.id}
               className="card w-full py-5 rounded-lg shadow-sm flex flex-col items-center border border-gray-200"
             >
-              <Image
-                src={res.image}
-                alt={res.image}
-                width={100}
-                height={100}
-                className="object-contain"
-              />
+              <div className="w-25 h-25 rounded-full overflow-hidden">
+                <Image
+                  src={"/profile.jpg"}
+                  alt={res.image}
+                  width={100}
+                  height={100}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+
               <p className="font-medium">{res.name}</p>
               <p className="text-sm text-gray-500">{res.post}</p>
               <div className="flex items-center justify-center gap-2 mt-2">
-                <div className="w-8 h-8 flex items-center justify-center bg-white shadow-xl rounded-full text-yellow-500">
+                <div className="w-8 h-8 flex items-center justify-center bg-white shadow-xl rounded-full text-[#FFA800]">
                   <Phone size={18} />
                 </div>
-                <div className="w-8 h-8 flex items-center justify-center bg-white shadow-xl rounded-full text-yellow-500">
+                <div className="w-8 h-8 flex items-center justify-center bg-white shadow-xl rounded-full text-[#FFA800]">
                   <Mail size={18} />
                 </div>
               </div>

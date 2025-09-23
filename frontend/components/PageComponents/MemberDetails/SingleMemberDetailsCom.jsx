@@ -29,24 +29,28 @@ const SingleMemberDetailsCom = () => {
   return (
     <div className="min-h-screen bg-gray-50 overflow-y-auto pb-20">
       {/* Header with background */}
-      <ProfileHeader/>
+      <ProfileHeader 
+        heading="Member Details"
+      />
 
       {/* Family Members */}
       <div className="mt-8 px-4">
         <h3 className="text-base font-semibold mb-3">Family members</h3>
-        <div className="flex gap-4 overflow-x-auto pb-2">
+        <div className="flex gap-2 overflow-x-auto pb-2">
           {familyMembers.map((member) => (
             <div
               key={member.name}
               className="min-w-[120px] card shadow rounded-xl p-4 flex flex-col items-center"
             >
-              <Image
-                src={member.image}
-                alt={member.name}
-                width={60}
-                height={60}
-                className="rounded-full"
-              />
+              <div className="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                <Image
+                  src="/profile.jpg"
+                  alt="Profile"
+                  width={128}
+                  height={128}
+                  className="object-cover w-full h-full"
+                />
+              </div>
               <p className="mt-2 font-medium text-sm">{member.name}</p>
               <p className="text-xs text-gray-500">{member.relation}</p>
             </div>
@@ -57,11 +61,11 @@ const SingleMemberDetailsCom = () => {
       {/* Vehicles */}
       <div className="mt-8 px-4 mb-10">
         <h3 className="text-base font-semibold mb-3">Vehicles</h3>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-2">
           {vehicles.map((vehicle) => (
             <div
               key={vehicle.name}
-              className="card shadow rounded-2xl p-3 flex flex-col items-center"
+              className=" card shadow rounded-2xl p-3 flex flex-col items-center"
             >
               <Image
                 src={vehicle.image}

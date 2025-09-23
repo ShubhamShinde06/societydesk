@@ -1,5 +1,6 @@
 "use client";
 
+import NameHeader from "@/components/AppComponents/NameHeader";
 import MySelfForm from "@/components/PageComponents/MyProfile/MySelfForm";
 import { ArrowLeft, Phone, Mail, Edit, Building2, Plus } from "lucide-react";
 import Image from "next/image";
@@ -21,16 +22,15 @@ export default function MyProfilePage() {
   const [ShowMySelfForm, setShowMySelfForm] = useState(false);
 
   return (
-    <div className="w-full h-full p-4 space-y-6 overflow-y-scroll pb-20 bg-gray-50">
+    <div className="w-full h-full space-y-4 overflow-y-scroll  bg-gray-50">
       {/* Header */}
-      <div className="flex items-center gap-3">
-        <Link href={"/home"}>
-          <ArrowLeft className="h-6 w-6 cursor-pointer" />
-        </Link>
-        <h1 className="text-lg font-semibold">My Profile</h1>
-      </div>
+      <NameHeader
+        heading={'My Profile'}
+        herf={'home'}
+      />
 
-      {/* Profile Card */}
+      <div className="px-4 space-y-4">
+        {/* Profile Card */}
       <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex items-start gap-4 relative">
         <Image
           src="/LogoColor.png"
@@ -79,11 +79,11 @@ export default function MyProfilePage() {
             </button>
           </Link>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="flex gap-2 overflow-x-auto pb-2">
           {family.map((member, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center card p-3 rounded-lg shadow-sm"
+              className="flex min-w-[120px] flex-col items-center card p-3 rounded-lg shadow-sm"
             >
               <Image
                 src={member.img}
@@ -128,6 +128,9 @@ export default function MyProfilePage() {
           ))}
         </div>
       </div>
+      </div>
+
+      
 
       {/* My Self Form */}
       {ShowMySelfForm && (

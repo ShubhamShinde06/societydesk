@@ -153,6 +153,7 @@ function Sidebar({
     );
   }
 
+  // Use Sheet for actual mobile devices (< 768px)
   if (isMobile) {
     return (
       <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
@@ -189,17 +190,26 @@ function Sidebar({
       <div
         data-slot="sidebar-gap"
         className={cn(
-          "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
-          "group-data-[collapsible=offcanvas]:w-0",
-          "group-data-[side=right]:rotate-180",
+          "relative transition-[width] duration-200 ease-linear",
+          // For md to lg screens (768px-1023px): sidebar is closed by default, no gap when closed
+          "md:max-lg:w-0",
+          "md:max-lg:group-data-[state=expanded]:w-(--sidebar-width)",
+          // For lg+ screens (1024px+): normal collapsible behavior
+          "lg:w-(--sidebar-width) lg:bg-transparent",
+          "lg:group-data-[collapsible=offcanvas]:w-0",
+          "lg:group-data-[side=right]:rotate-180",
           variant === "floating" || variant === "inset"
-            ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
-            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
+            ? "lg:group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
+            : "lg:group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
         )} />
       <div
         data-slot="sidebar-container"
         className={cn(
-          "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex",
+          "fixed inset-y-0 z-10 h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear",
+          // For md to lg screens (768px-1023px): hidden by default, show when expanded
+          "md:max-lg:hidden md:max-lg:group-data-[state=expanded]:flex",
+          // For lg+ screens (1024px+): normal behavior
+          "lg:flex",
           side === "left"
             ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
             : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",

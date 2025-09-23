@@ -11,9 +11,9 @@ export default function Login() {
   return (
     <>
       {/* Action Section */}
-      <div className="w-full h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
+      <div className="w-full lg:max-w-2xl  h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
         <h1 className="text-2xl font-semibold">Login</h1>
-        <div className="w-full flex flex-col space-y-4 items-start">
+        <div className="w-full flex flex-col space-y-4 items-start ">
           <div className="w-full flex flex-col items-start space-y-1">
             <label htmlFor="">Society Code</label>
             <input
@@ -26,10 +26,10 @@ export default function Login() {
           </div>
 
           <div className="w-full flex flex-col items-start space-y-1">
-            <label htmlFor="">Phone No.</label>
+            <label htmlFor="">Email</label>
             <input
-              type="text"
-              placeholder="Enter your phone no."
+              type="email"
+              placeholder="Enter your email"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
               tabIndex={2}
             />

@@ -11,7 +11,7 @@ export default function SetNewPassword() {
   return (
     <>
       {/* Action Section */}
-      <div className="w-full  bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
+      <div className="w-full  lg:max-w-2xl bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
         <h1 className="text-2xl font-semibold">Set New Password</h1>
         <div className="w-full flex flex-col space-y-4 items-start">
           <div className="w-full flex flex-col items-start space-y-2">

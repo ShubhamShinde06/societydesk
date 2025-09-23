@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
 
-const OTP = ({PhoneNo}) => {
+const OTP = ({Email}) => {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef([]);
   const router = useRouter()
@@ -44,7 +44,7 @@ const OTP = ({PhoneNo}) => {
         {"Enter Code"}
       </h1>
       <p className=" leading-tight tracking-tight text-black lg:text-xl">
-        Enter the 6-digit code sent to your {PhoneNo}
+        Enter the 6-digit code sent to your {Email}
       </p>
       <form
         //  onSubmit={handleSubmit}

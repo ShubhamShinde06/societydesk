@@ -15,7 +15,7 @@ export default function AppLayout({ children }) {
     "/auth/set-new-password",
     "/my-profile/family-member/add",
     "/my-profile/vehicle/add",
-    "/my-complaints"
+
   ];
 
   const isReadonly = searchParams?.get("view") === "readonly";
@@ -23,15 +23,17 @@ export default function AppLayout({ children }) {
   const hideLayout =
     hiddenPaths.includes(pathname) || 
     (isReadonly && hasRptFrmNo) || 
-    pathname.startsWith("/events/details/") ||
-    pathname.startsWith("/auth/") ||
-    pathname.startsWith("/my-visitors/details/") ||
-    pathname.startsWith("/my-visitors/list/details/")
+    pathname.startsWith("/events/details") ||
+    pathname.startsWith("/auth") ||
+    pathname.startsWith("/my-visitors/details") ||
+    pathname.startsWith("/my-visitors/list/details") ||
+    pathname.startsWith("/complaints") || 
+    pathname.startsWith("/maintenance")
   
 
   return (
     <>
-      {!hideLayout && <SideBar />}
+      {!hideLayout && <div className=""><SideBar /></div> }
       <main className="flex-1 w-full h-screen overflow-hidden">
         <div className=" rounded-lg dark:bg-[#0a0a0a]  flex flex-col  h-full ">
           {!hideLayout && (

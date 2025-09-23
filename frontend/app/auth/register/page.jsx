@@ -19,7 +19,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="w-full h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
+      <div className="w-full  lg:max-w-2xl h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
         <h1 className="text-2xl font-semibold">Register</h1>
         <div className="w-full flex flex-col space-y-4 items-start">
           {/* Society Code */}
@@ -30,19 +30,18 @@ export default function Register() {
               placeholder="Enter your society"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]"
               tabIndex={1}
-              
             />
           </div>
 
           {/* Wing Dropdown */}
           <div className="w-full flex flex-col items-start space-y-1">
             <label>Wing</label>
-            <Select>
+            <Select tabIndex={2}>
               <SelectTrigger className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]">
                 <SelectValue placeholder="Select Wing" />
               </SelectTrigger>
               <SelectContent>
-                <SelectGroup>
+                <SelectGroup >
                   <SelectLabel>Available Wings</SelectLabel>
                   <SelectItem value="A">Wing A</SelectItem>
                   <SelectItem value="B">Wing B</SelectItem>
@@ -75,7 +74,7 @@ export default function Register() {
           {/* Flat Number Dropdown */}
           <div className="w-full flex flex-col items-start space-y-1">
             <label>Flat No.</label>
-            <Select >
+            <Select>
               <SelectTrigger className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]">
                 <SelectValue placeholder="Select Flat No." />
               </SelectTrigger>
@@ -99,16 +98,29 @@ export default function Register() {
               type="text"
               placeholder="Enter your full name"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]"
+                  tabIndex={5}
             />
           </div>
 
           {/* Phone */}
           <div className="w-full flex flex-col items-start space-y-1">
-            <label>Phone No.</label>
+            <label>Email</label>
             <input
-              type="number"
-              placeholder="Enter your phone no."
+              type="email"
+              placeholder="Enter your email"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]"
+                  tabIndex={6}
+            />
+          </div>
+
+          {/* Phone */}
+          <div className="w-full flex flex-col items-start space-y-2">
+            <label>Phone No.</label>
+            <Input
+              type="tel"
+              placeholder="Enter phone number"
+              className="w-full border border-gray-300"
+              tabIndex={7}
             />
           </div>
 
@@ -130,15 +142,9 @@ export default function Register() {
             </div>
           </div>
 
-          {/* Family Members */}
-          <div className="w-full flex flex-col items-start space-y-1">
-            <label>How Many Members in Family</label>
-            <input type="number" placeholder="Enter number" className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0FE7C8]" />
-          </div>
-
           {/* Register Button */}
           <button className="btn-skyblue w-full">
-            <Link href={'/home'}>Register</Link>  
+            <Link href={"/home"}>Register</Link>
           </button>
 
           {/* Login Link */}

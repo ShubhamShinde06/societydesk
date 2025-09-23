@@ -39,7 +39,7 @@ export default function SocietyRegister() {
   };
 
   return (
-    <div className="w-full h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
+    <div className="w-full  lg:max-w-2xl h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
       <h1 className="text-2xl font-semibold">Society Register</h1>
       <div className="w-full flex flex-col space-y-4 items-start">
         {/* Society Name */}
@@ -184,12 +184,23 @@ export default function SocietyRegister() {
 
         {/* Phone */}
         <div className="w-full flex flex-col items-start space-y-2">
+          <label>Email</label>
+          <Input
+            type="email"
+            placeholder="Enter email"
+            className="w-full border border-gray-300"
+            tabIndex={9}
+          />
+        </div>
+
+        {/* Phone */}
+        <div className="w-full flex flex-col items-start space-y-2">
           <label>Phone No.</label>
           <Input
             type="number"
             placeholder="Enter phone number"
             className="w-full border border-gray-300"
-            tabIndex={9}
+            tabIndex={10}
           />
         </div>
 
@@ -201,7 +212,7 @@ export default function SocietyRegister() {
               type={showPassword ? "text" : "password"}
               placeholder="Set password"
               className="flex-1 border-0 outline-0 px-2"
-              tabIndex={10}
+              tabIndex={11}
             />
             <div
               className="pr-2 cursor-pointer"
@@ -212,25 +223,18 @@ export default function SocietyRegister() {
           </div>
         </div>
 
-        {/* Family Members */}
-        <div className="w-full flex flex-col items-start space-y-2">
-          <label>How Many Members in Family</label>
-          <Input
-            type="number"
-            placeholder="Enter number"
-            className="w-full border border-gray-300"
-            tabIndex={11}
-          />
-        </div>
-
         {/* Register Button */}
-        <button className="btn-orange w-full" tabIndex={12}>Society Register</button>
+        <button className="btn-orange w-full" tabIndex={12}>
+          Society Register
+        </button>
 
         {/* Login Link */}
         <p className="text-center w-full">
           Already register Society?{" "}
           <Link href={"/auth"}>
-            <span className="text-orange-400 font-semibold" tabIndex={13}>Back</span>
+            <span className="text-orange-400 font-semibold" tabIndex={13}>
+              Back
+            </span>
           </Link>
         </p>
       </div>

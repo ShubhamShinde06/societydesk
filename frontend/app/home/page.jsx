@@ -10,8 +10,9 @@ import {
   Wrench,
   Search,
   Bell,
+  Menu,
 } from "lucide-react";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { useRouter } from "next/navigation";
 
 const banners = [
@@ -54,19 +55,20 @@ const features = [
     name: "Complaints",
     icon: <MailWarning className="w-8 h-8 text-red-500" />,
     bg: "bg-orange-100",
-    herf: "/my-complaints",
+    herf: "/complaints",
   },
   {
     id: 6,
     name: "Maintenance",
     icon: <Wrench className="w-8 h-8 text-pink-500" />,
     bg: "bg-pink-50",
-    herf: "/my-society",
+    herf: "/maintenance",
   },
 ];
 export default function HomePage() {
   const [activeBanner, setActiveBanner] = useState(0);
   const router = useRouter();
+   const { toggleSidebar } = useSidebar();
 
   return (
     <>
@@ -75,6 +77,7 @@ export default function HomePage() {
           {/* Top Row */}
           <div className="flex items-center justify-between">
             <SidebarTrigger className={"text-black"} />
+            {/* <Menu onClick={() => window.innerWidth < 1024 && toggleSidebar()}/> */}
 
             {/* Middle - Greeting */}
             <div className="text-center">
@@ -104,7 +107,7 @@ export default function HomePage() {
 
         <div className="p-4 space-y-6">
           {/* Banner / Ads */}
-          <div className="h-30 relative bg-gradient-to-r from-purple-600 to-pink-500 text-white p-6  rounded-xl shadow-lg">
+          <div className="h-30 lg:h-60 relative bg-gradient-to-r from-purple-600 to-pink-500 text-white p-6  rounded-xl shadow-lg">
             <h2 className="text-lg font-semibold">
               {banners[activeBanner].text}
             </h2>
@@ -124,11 +127,11 @@ export default function HomePage() {
           </div>
 
           {/* Feature Grid */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f) => (
               <div
                 key={f.id}
-                className={`${f.bg} flex flex-col items-center justify-center p-8 rounded-xl shadow hover:scale-105 transition`}
+                className={`${f.bg} flex flex-col items-center justify-center p-8 lg:p-12 rounded-xl shadow hover:scale-105 transition`}
                 onClick={() => router.push(`${f.herf}`)}
               >
                 {f.icon}

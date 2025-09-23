@@ -30,9 +30,9 @@ export default function AppSideBar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar collapsible="icon" className="print:hidden h-full hide-scrollbar">
+    <Sidebar  className="print:hidden h-full hide-scrollbar">
       {/* Profile Header */}
-      <SidebarHeader className="w-full bg-gradient-to-r from-indigo-800 to-purple-700 text-white p-4">
+      <SidebarHeader className="w-full bg-gradient-to-r from-indigo-800 to-purple-700 text-white p-4 ">
         <div className="flex items-center gap-3">
           <Image
             src="/LogoWhite.png" // replace with dynamic user image
@@ -46,7 +46,7 @@ export default function AppSideBar() {
             <p className="text-sm text-gray-200">302, Wing A, Jackson Height</p>
             <Link
               href="/my-profile"
-              onClick={() => window.innerWidth < 1024 && toggleSidebar()}
+              onClick={() => toggleSidebar()}
               className="text-yellow-400 underline text-sm hover:text-yellow-300"
             >
               View Profile

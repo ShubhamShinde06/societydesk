@@ -7,25 +7,25 @@ import { useState } from "react";
 
 export default function Forgot() {
   const [OTPShow, setOTPShow] = useState(false);
-  const [PhoneNo, setPhoneNo] = useState("");
+  const [Email, setEmail] = useState("");
   return (
     <>
       {/* Action Section */}
-      <div className="w-full  bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
+      <div className="w-full  lg:max-w-2xl  bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
         <div className="w-full flex flex-col space-y-4 items-start">
           {OTPShow ? (
-            <OTP PhoneNo={PhoneNo} />
+            <OTP Email={Email} />
           ) : (
             <>
               <div className="w-full flex flex-col items-start space-y-2">
-                <label htmlFor="">Enter Register Phone No.</label>
+                <label htmlFor="">Enter Register Email</label>
                 <Input
-                  type="tel"
-                  placeholder="Enter phone number"
+                  type="email"
+                  placeholder="Enter email"
                   className="border border-gray-400 w-full"
                   tabIndex={1}
-                  value={PhoneNo}
-                  onChange={(e) => setPhoneNo(e.target.value)}
+                  value={Email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <button

@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/AppComponents/Header";
+import Header from "@/components/AppComponents/SearchHeader";
 import Image from "next/image";
 import Link from "next/link"; 
 import { useRouter } from "next/navigation";
@@ -22,19 +22,19 @@ const VisitorsListCom = () => {
   return (
     <div className="w-full min-h-screen bg-white">
       {/* Header */}
-      <Header heading={"My Visitors List"} placholder={"Search for visitors"} />
+      <Header heading={"My Visitors List"} placholder={"Search for visitors"} href={'my-visitors'}/>
 
       {/* Visitor Request Section */}
       <div className="p-4">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-base font-semibold flex items-center gap-2">
             Visitor Request
-            <span className="text-xs text-white bg-orange-500 px-2 py-0.5 rounded-full">
+            <span className="text-xs text-white bg-[#FFA800] px-2 py-0.5 rounded-full">
               12
             </span>
           </h2>
           <span
-            className="text-sm text-yellow-500 underline font-medium cursor-pointer hover:underline"
+            className="text-sm text-[#FFA800] underline font-medium cursor-pointer hover:underline"
             onClick={() => router.push("/my-visitors")}
           >
             Clear All

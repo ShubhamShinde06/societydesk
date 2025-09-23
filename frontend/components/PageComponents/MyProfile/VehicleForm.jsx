@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowLeft, ImageIcon } from "lucide-react";
-import Link from "next/link";
+import NameHeader from "@/components/AppComponents/NameHeader";
+import { ImageIcon } from "lucide-react";
 import { useState } from "react";
 
 const VehicleForm = () => {
@@ -11,15 +11,15 @@ const VehicleForm = () => {
   const [file, setFile] = useState(null);
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-center gap-3">
-        <Link href={'/my-profile'}><ArrowLeft className="h-6 w-6 cursor-pointer" /></Link>
-        <h1 className="text-lg font-semibold">Add Vehicle</h1>
-      </div>
+      <NameHeader
+        heading={'Add Vehicle'}
+        herf={'my-profile'}
+      />
 
       {/* Form */}
-      <form className="space-y-5">
+      <form className="space-y-4 px-4">
         {/* Vehicle Company */}
         <div>
           <label className="block text-sm font-medium mb-1">Vehicle Company</label>

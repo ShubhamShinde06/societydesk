@@ -1,17 +1,16 @@
 import { ArrowLeft, Search } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const Header = ({ href, heading, placholder }) => {
+const SearchHeader = ({ href, heading, placholder }) => {
   const router = useRouter();
 
   return (
-    <div className="w-full header px-4 py-5 rounded-b-3xl shadow-md">
+    <div className="w-full header  px-4 py-5 rounded-b-3xl shadow-md">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <ArrowLeft
-            onClick={() => router.back()}
+            onClick={() => router.push(`/${href}`)}
             className="h-6 w-6 cursor-pointer"
           />
 
@@ -33,4 +32,4 @@ const Header = ({ href, heading, placholder }) => {
   );
 };
 
-export default Header;
+export default SearchHeader;

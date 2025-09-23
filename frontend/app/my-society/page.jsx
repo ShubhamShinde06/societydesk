@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Building2 } from "lucide-react";
-import Header from "@/components/AppComponents/Header";
+import { Building, Building2 } from "lucide-react";
+import Header from "@/components/AppComponents/SearchHeader";
 import { useRouter } from "next/navigation";
 
 const wings = [
@@ -31,14 +31,14 @@ export default function MySocietyPage() {
       </div>
 
       {/* Wings Grid */}
-      <div className="grid grid-cols-2 gap-y-6 py-6 place-items-center">
+      <div className="grid grid-cols-2 gap-y-6 py-6 place-items-center lg:gap-x-6 lg:px-6">
         {wings.map((wing) => (
           <div
             key={wing.id}
-            className="bg-[#FEFAF2] border border-[#F6EDDA] w-40 h-40 flex flex-col items-center justify-center rounded-full shadow-sm hover:scale-105 transition"
+            className="bg-[#FEFAF2] border border-[#F6EDDA] w-40 h-40 lg:w-full  flex flex-col items-center justify-center rounded-full lg:rounded-xl shadow-sm hover:scale-105 transition"
             onClick={()=>router.push(wing.href)}
           >
-            <Building2 className="w-10 h-10 text-[#E19925]" />
+            <Building className="w-10 h-10 text-[#E19925]" />
             <p className="mt-2 text-base font-semibold text-gray-800">
               {wing.name}
             </p>

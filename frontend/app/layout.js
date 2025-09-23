@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/icon.ico" />
       </head>
       <body
-        className={`${poppins.variable} ${inter.variable} md:hidden`}
+        className={`${poppins.variable} ${inter.variable} `}
         suppressHydrationWarning
       >
         <ClientLayout>{children}</ClientLayout>

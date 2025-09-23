@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Clock } from "lucide-react";
 import Image from "next/image";
-import Header from "@/components/AppComponents/Header";
+import Header from "@/components/AppComponents/SearchHeader";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -54,14 +54,14 @@ export default function MyVisitorsPage() {
   return (
     <div className="w-full h-full bg-gray-50">
       {/* Header */}
-      <Header heading={"My Visitors"} placholder={"Search for visitors"} />
+      <Header heading={"My Visitors"} placholder={"Search for visitors"} href={'home'}/>
 
       {/* Visitor Request */}
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
           <h2 className="text-base font-semibold">
             Visitor Request{" "}
-            <span className="text-xs text-white bg-orange-500 px-2 py-0.5 rounded-full">
+            <span className="text-xs text-white bg-[#FFA800] px-2 py-0.5 rounded-full">
               12
             </span>
           </h2>
@@ -188,13 +188,13 @@ export default function MyVisitorsPage() {
                   <div className=" flex items-center justify-between border-b rounded-b-xl p-1 px-3  bg-orange-50">
                     <h1>
                       Check In:{" "}
-                      <span className="text-orange-600 font-semibold">
+                      <span className="text-[#FFA800] font-semibold">
                         08:30
                       </span>
                     </h1>
                     <h1>
                       Check Out:{" "}
-                      <span className="text-orange-600 font-semibold">
+                      <span className="text-[#FFA800] font-semibold">
                         11:30
                       </span>
                     </h1>

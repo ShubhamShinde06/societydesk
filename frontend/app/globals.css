@@ -57,7 +57,7 @@ body, p, span, input, button, table {
 }
 
 .card{
-  @apply bg-gradient-to-b from-[#F8F7FE] to-[#EDEBFA]
+  @apply bg-white
 }
 
 .btn-orange{

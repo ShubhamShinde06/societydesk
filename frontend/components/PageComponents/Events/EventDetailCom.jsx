@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ArrowLeft, Calendar, MapPin, Phone } from "lucide-react";
 import { useRouter } from "next/navigation";
+import NameHeader from "@/components/AppComponents/NameHeader";
 
 const EventDetailCom = () => {
   const router = useRouter();
@@ -25,15 +26,11 @@ const EventDetailCom = () => {
   };
 
   return (
-    <div className=" h-full overflow-y-auto bg-gray-50 flex flex-col ">
+    <div className=" h-full overflow-y-auto bg-gray-50 flex flex-col gap-4 ">
       {/* Header */}
-      <div className="flex items-center gap-3 p-4">
-        <ArrowLeft
-          onClick={() => router.back()}
-          className="h-6 w-6 cursor-pointer"
-        />
-        <h1 className="text-lg font-semibold">Upcoming Events</h1>
-      </div>
+      <NameHeader 
+        heading={'Upcoming Events'}
+      />
 
       {/* Banner */}
       <div className="relative">
