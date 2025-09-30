@@ -1,4 +1,4 @@
-import SingleCommitteeDatailsCom from "@/components/PageComponents/Committee/SingleCommitteeDatailsCom";
+import SingleCommitteeDatailsCom from "@/components/PageComponents/Committee/SingleCommitteeDatailsCom.jsx";
 
 
 export default function CommiteeDatailsPage() {
