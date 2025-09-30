@@ -1,10 +1,10 @@
-import SingleCommitteeDatailsCom from "@/components/PageComponents/Committee/SingleCommitteeDatailsCom.jsx";
+import Singlecommitteedetailscom from "@/components/PageComponents/Committee/SingleCommitteeDetailsCom";
 
 
 export default function CommiteeDatailsPage() {
   return(
     <>
-      <SingleCommitteeDatailsCom/>
+      <Singlecommitteedetailscom/>
     </>
   )
 }

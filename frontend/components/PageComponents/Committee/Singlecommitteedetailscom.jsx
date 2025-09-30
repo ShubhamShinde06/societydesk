@@ -3,7 +3,8 @@
 import ProfileHeader from "@/components/AppComponents/ProfileHeader";
 import { ArrowLeft, Mail, Phone } from "lucide-react";
 import Image from "next/image";
-const SingleCommitteeDatailsCom = () => {
+
+const Singlecommitteedetailscom = () => {
   const moreMembers = [
     { id: 1, name: "Emily Novak", role: "Secretary", img: "/user1.jpg" },
     { id: 2, name: "Olivia Harrington", role: "Treasurer", img: "/user2.jpg" },
@@ -78,4 +79,4 @@ const SingleCommitteeDatailsCom = () => {
   );
 };
 
-export default SingleCommitteeDatailsCom;
+export default Singlecommitteedetailscom;
