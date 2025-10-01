@@ -1,10 +1,5 @@
-import Singlecommitteedetailscom from "@/components/PageComponents/Committee/SingleCommitteeDetailsCom";
+import SingleCommitteeDetailsCom from "@/components/PageComponents/Committee/SingleCommitteeDetailsCom.jsx";
 
-
-export default function CommiteeDatailsPage() {
-  return(
-    <>
-      <Singlecommitteedetailscom/>
-    </>
-  )
+export default function CommitteeDetailsPage() {
+  return <SingleCommitteeDetailsCom />;
 }
