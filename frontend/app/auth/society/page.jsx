@@ -14,12 +14,70 @@ import {
 } from "@/components/ui/select";
 import { EyeIcon, EyeOff } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import axios from "axios";
+import {
+  showErrorToast,
+  showSuccessToast,
+} from "@/components/AppComponents/Notification";
 
 const indiaStates = {
-  Maharashtra: ["Mumbai", "Pune", "Nagpur"],
-  Gujarat: ["Ahmedabad", "Surat", "Vadodara"],
-  Karnataka: ["Bangalore", "Mysore", "Mangalore"],
+  "Andhra Pradesh": [
+    "Visakhapatnam",
+    "Vijayawada",
+    "Guntur",
+    "Nellore",
+    "Kurnool",
+    "Tirupati",
+  ],
+  "Arunachal Pradesh": ["Itanagar", "Tawang", "Ziro", "Pasighat"],
+  Assam: ["Guwahati", "Dibrugarh", "Silchar", "Jorhat", "Tezpur"],
+  Bihar: ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga"],
+  Chhattisgarh: ["Raipur", "Bilaspur", "Korba", "Durg", "Bhilai"],
+  Goa: ["Panaji", "Margao", "Vasco da Gama"],
+  Gujarat: [
+    "Ahmedabad",
+    "Surat",
+    "Vadodara",
+    "Rajkot",
+    "Jamnagar",
+    "Bhavnagar",
+  ],
+  Haryana: ["Gurgaon", "Faridabad", "Ambala", "Panipat", "Hisar"],
+  "Himachal Pradesh": ["Shimla", "Dharamshala", "Manali", "Solan"],
+  Jharkhand: ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro"],
+  Karnataka: ["Bengaluru", "Mysore", "Mangalore", "Hubli", "Belgaum"],
+  Kerala: ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur", "Alappuzha"],
+  "Madhya Pradesh": ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain"],
+  Maharashtra: ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad"],
+  Manipur: ["Imphal"],
+  Meghalaya: ["Shillong"],
+  Mizoram: ["Aizawl"],
+  Nagaland: ["Kohima"],
+  Odisha: ["Bhubaneswar", "Cuttack", "Rourkela"],
+  Punjab: ["Chandigarh", "Ludhiana", "Amritsar", "Jalandhar"],
+  Rajasthan: ["Jaipur", "Udaipur", "Jodhpur", "Kota", "Ajmer"],
+  Sikkim: ["Gangtok"],
+  "Tamil Nadu": [
+    "Chennai",
+    "Coimbatore",
+    "Madurai",
+    "Tiruchirappalli",
+    "Salem",
+  ],
+  Telangana: ["Hyderabad", "Warangal"],
+  Tripura: ["Agartala"],
+  "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi", "Agra", "Meerut"],
+  Uttarakhand: ["Dehradun", "Haridwar", "Nainital"],
+  "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Siliguri"],
   Delhi: ["New Delhi", "Dwarka", "Rohini"],
+  "Union Territories": {
+    Delhi: ["New Delhi"],
+    Puducherry: ["Puducherry"],
+    Chandigarh: ["Chandigarh"],
+    "Andaman & Nicobar Islands": ["Port Blair"],
+    Lakshadweep: ["Kavaratti"],
+  },
 };
 
 export default function SocietyRegister() {
@@ -30,7 +88,21 @@ export default function SocietyRegister() {
   const [flatsPerFloor, setFlatsPerFloor] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
 
-  const wings = ["A", "B", "C", "D", "E"];
+  // Form fields
+  const [socName, setSocName] = useState("");
+  const [address, setAddress] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const wings = Array.from(
+    { length: 26 },
+    (_, i) => String.fromCharCode(65 + i) // 65 = 'A' in ASCII
+  );
 
   const toggleWing = (wing) => {
     setSelectedWings((prev) =>
@@ -38,8 +110,53 @@ export default function SocietyRegister() {
     );
   };
 
+  const handleSubmit = async () => {
+    setLoading(true);
+    setMessage("");
+
+    const SocietyData = {
+      SocName: socName,
+      State: selectedState,
+      City: selectedCity,
+      Address: address,
+      SocWings: selectedWings, // should be array
+      SocFloor: Number(numFloors),
+      SocFlats_per_Floor: Number(flatsPerFloor),
+    };
+
+    const MemberData = {
+      Name: fullName,
+      Email: email,
+      MobNo: phone,
+      Pwd: password,
+    };
+
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/api/auth/society-register",
+        {
+          SocietyData,
+          MemberData,
+        }
+      );
+
+      console.log("API Response:", res.data);
+
+      if (res.data.success) {
+        showSuccessToast({ heading: "Society registered successfully!" });
+      } else {
+        showErrorToast({ heading: res.data.message || "Something went wrong" });
+      }
+    } catch (error) {
+      console.log("API Error:", error.response?.data || error.message);
+      showErrorToast({ heading: "Server error. Try again later." });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="w-full  lg:max-w-2xl h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
+    <div className="w-full lg:max-w-2xl h-2/3 bg-white/90 text-black backdrop-blur-xl shadow-2xl p-8 text-center rounded-t-3xl space-y-8 overflow-y-auto">
       <h1 className="text-2xl font-semibold">Society Register</h1>
       <div className="w-full flex flex-col space-y-4 items-start">
         {/* Society Name */}
@@ -47,9 +164,10 @@ export default function SocietyRegister() {
           <label>Society Name</label>
           <Input
             type="text"
-            placeholder="Enter society name "
+            placeholder="Enter society name"
+            value={socName}
+            onChange={(e) => setSocName(e.target.value)}
             className="w-full border border-gray-300"
-            tabIndex={1}
           />
         </div>
 
@@ -61,7 +179,6 @@ export default function SocietyRegister() {
               setSelectedState(val);
               setSelectedCity("");
             }}
-            tabIndex={2}
           >
             <SelectTrigger className="w-full border border-gray-300">
               <SelectValue placeholder="Select state" />
@@ -83,7 +200,7 @@ export default function SocietyRegister() {
         {selectedState && (
           <div className="w-full flex flex-col items-start space-y-2">
             <label>City</label>
-            <Select tabIndex={3} onValueChange={setSelectedCity}>
+            <Select onValueChange={setSelectedCity}>
               <SelectTrigger className="w-full border border-gray-300">
                 <SelectValue placeholder="Select city" />
               </SelectTrigger>
@@ -106,43 +223,31 @@ export default function SocietyRegister() {
           <label>Address</label>
           <Textarea
             placeholder="Enter your society address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
             className="w-full border border-gray-300"
-            tabIndex={4}
           />
         </div>
 
         {/* Wings Multi-Select */}
-        <div className="w-full flex flex-col items-start space-y-2">
+        <div className="w-full flex flex-col items-start space-y-2 ">
           <label>Select Wings</label>
-          <Select tabIndex={5}>
-            <SelectTrigger className="w-full border border-gray-300">
-              <SelectValue
-                placeholder="Select wings"
-                // Show selected items as comma separated
-                defaultValue=""
-              >
-                {selectedWings.length > 0
-                  ? selectedWings.join(", ")
-                  : "Select Wings"}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectLabel>Available Wings</SelectLabel>
-                {wings.map((wing) => (
-                  <SelectItem
-                    key={wing}
-                    value={wing}
-                    onClick={() => toggleWing(wing)}
-                  >
-                    {selectedWings.includes(wing)
-                      ? `✅ Wing ${wing}`
-                      : `Wing ${wing}`}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <div className="w-full border border-gray-300 rounded-md p-2 place-items-center grid grid-cols-2 md:grid-cols-4 gap-4">
+            {wings.map((wing) => (
+              <div key={wing} className="flex items-center space-x-2">
+                <Checkbox
+                  checked={selectedWings.includes(wing)}
+                  onCheckedChange={() => toggleWing(wing)}
+                />
+                <span>Wing {wing}</span>
+              </div>
+            ))}
+          </div>
+          {selectedWings.length > 0 && (
+            <p className="text-sm text-gray-500">
+              Selected: {selectedWings.join(", ")}
+            </p>
+          )}
         </div>
 
         {/* Floors Input */}
@@ -154,7 +259,6 @@ export default function SocietyRegister() {
             onChange={(e) => setNumFloors(Number(e.target.value))}
             placeholder="Enter number of floors"
             className="w-full border border-gray-300"
-            tabIndex={6}
           />
         </div>
 
@@ -167,7 +271,6 @@ export default function SocietyRegister() {
             onChange={(e) => setFlatsPerFloor(Number(e.target.value))}
             placeholder="Enter flats per floor"
             className="w-full border border-gray-300"
-            tabIndex={7}
           />
         </div>
 
@@ -176,20 +279,22 @@ export default function SocietyRegister() {
           <label>Full Name</label>
           <Input
             type="text"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             placeholder="Enter your full name"
             className="w-full border border-gray-300"
-            tabIndex={8}
           />
         </div>
 
-        {/* Phone */}
+        {/* Email */}
         <div className="w-full flex flex-col items-start space-y-2">
           <label>Email</label>
           <Input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
             className="w-full border border-gray-300"
-            tabIndex={9}
           />
         </div>
 
@@ -198,9 +303,10 @@ export default function SocietyRegister() {
           <label>Phone No.</label>
           <Input
             type="number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             placeholder="Enter phone number"
             className="w-full border border-gray-300"
-            tabIndex={10}
           />
         </div>
 
@@ -210,9 +316,10 @@ export default function SocietyRegister() {
           <div className="border border-gray-300 rounded-md w-full flex items-center">
             <Input
               type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Set password"
               className="flex-1 border-0 outline-0 px-2"
-              tabIndex={11}
             />
             <div
               className="pr-2 cursor-pointer"
@@ -224,20 +331,27 @@ export default function SocietyRegister() {
         </div>
 
         {/* Register Button */}
-        <button className="btn-orange w-full" tabIndex={12}>
-          Society Register
+        <button
+          onClick={handleSubmit}
+          disabled={loading}
+          className="btn-orange w-full"
+        >
+          {loading ? "Registering..." : "Society Register"}
         </button>
 
         {/* Login Link */}
         <p className="text-center w-full">
-          Already register Society?{" "}
+          Already registered Society?{" "}
           <Link href={"/auth"}>
-            <span className="text-orange-400 font-semibold" tabIndex={13}>
-              Back
-            </span>
+            <span className="text-orange-400 font-semibold">Back</span>
           </Link>
         </p>
       </div>
+
+      {/* Show message */}
+      {message && (
+        <p className="mt-4 text-center font-medium text-red-600">{message}</p>
+      )}
 
       {/* Dummy Data Preview */}
       {selectedWings.length > 0 && numFloors > 0 && flatsPerFloor > 0 && (

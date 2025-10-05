@@ -11,10 +11,21 @@ const apiPostSlice = apiSlice.injectEndpoints({
     //     body: data,
     //   }),
     // }),
+
+    //auth
+    PostSocietyRegister: builder.mutation({
+      query: ({SocietyData, MemberData}) => ({
+        url: "/auth/society-resgiter",
+        method: "POST",
+        body: {SocietyData, MemberData},
+      }),
+    }),
   
   }),
 });
 
 export const {
+
+  usePostSocietyRegisterMutation
  
 } = apiPostSlice;

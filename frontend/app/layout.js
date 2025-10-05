@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/provider/Themeprovider";
 import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
 import ClientLayout from "@/provider/ClientLayout";
+import { Toaster } from "sonner";
 
 // Load fonts
 const poppins = Poppins({
@@ -33,7 +34,7 @@ export default function RootLayout({ children }) {
       >
         <ClientLayout>{children}</ClientLayout>
 
-        {/* <Toaster position="top-center" /> */}
+        <Toaster position="top-center" />
       </body>
     </html>
   );
